@@ -5,18 +5,30 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-public class RestaurantDto {
-    private Long id;
-    private String name;
-    private int minOrderPrice;
-    private int deliveryFee;
 
-    public RestaurantDto(RestaurantForm restaurantForm) {
-        this.name = restaurantForm.getName();
-        this.minOrderPrice = restaurantForm.getMinOrderPrice();
-        this.deliveryFee = restaurantForm.getDeliveryFee();
+public class RestaurantDto {
+
+    @NoArgsConstructor
+    @Getter
+    public static class Request {
+        private String name;
+        private int minOrderPrice;
+        private int deliveryFee;
+
+        public Request(RestaurantForm restaurantForm) {
+            this.name = restaurantForm.getName();
+            this.minOrderPrice = restaurantForm.getMinOrderPrice();
+            this.deliveryFee = restaurantForm.getDeliveryFee();
+        }
+    }
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Getter
+    public static class Response {
+        private Long id;
+        private String name;
+        private int minOrderPrice;
+        private int deliveryFee;
     }
 }

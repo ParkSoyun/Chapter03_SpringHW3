@@ -20,18 +20,18 @@ public class RestaurantController {
     private final RestaurantService restaurantService;
 
     @PostMapping("/restaurant/register")
-    public RestaurantDto registerRestaurant(@Valid @RequestBody RestaurantForm restaurantForm, BindingResult bindingResult) throws BindException {
+    public RestaurantDto.Response registerRestaurant(@Valid @RequestBody RestaurantForm restaurantForm, BindingResult bindingResult) throws BindException {
         if(bindingResult.hasErrors()) {
             throw new BindException(bindingResult);
         }
 
-        RestaurantDto restaurantDto = new RestaurantDto(restaurantForm);
+        RestaurantDto.Request restaurantRequestDto = new RestaurantDto.Request(restaurantForm);
 
-        return restaurantService.registerRestaurant(restaurantDto);
+        return restaurantService.registerRestaurant(restaurantRequestDto);
     }
 
     @GetMapping("/restaurants")
-    public List<RestaurantDto> getRestaurantList() {
+    public List<RestaurantDto.Response> getRestaurantList() {
         return restaurantService.getRestaurantList();
     }
 }

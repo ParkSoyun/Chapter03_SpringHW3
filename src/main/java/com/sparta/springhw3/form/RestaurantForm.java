@@ -2,10 +2,12 @@ package com.sparta.springhw3.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 public class RestaurantForm {
 

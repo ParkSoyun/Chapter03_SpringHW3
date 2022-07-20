@@ -27,9 +27,9 @@ public class RestaurantService {
         return deliveryFee % DELIVERY_FEE_UNIT == 0;
     }
 
-    public RestaurantDto registerRestaurant(RestaurantDto restaurantDto) {
-        int minOrderPrice = restaurantDto.getMinOrderPrice();
-        int deliveryFee = restaurantDto.getDeliveryFee();
+    public RestaurantDto.Response registerRestaurant(RestaurantDto.Request restaurantRequestDto) {
+        int minOrderPrice = restaurantRequestDto.getMinOrderPrice();
+        int deliveryFee = restaurantRequestDto.getDeliveryFee();
 
         if(!checkMinOrderPrice(minOrderPrice)) {
             throw new IllegalArgumentException("최소 주문 금액은 100원 단위로만 입력이 가능합니다.");
@@ -39,19 +39,19 @@ public class RestaurantService {
             throw new IllegalArgumentException("배달료는 500원 단위로만 입력이 가능합니다.");
         }
 
-        Restaurant restaurant = new Restaurant(restaurantDto);
+        Restaurant restaurant = new Restaurant(restaurantRequestDto);
 
-        Restaurant registerRestaurant = restaurantRepository.save(restaurant);
-        RestaurantDto registerRestaurantDto = modelMapper.map(registerRestaurant, RestaurantDto.class);
+        Restaurant registerResult = restaurantRepository.save(restaurant);
+        RestaurantDto.Response restaurantResponseDto = modelMapper.map(registerResult, RestaurantDto.Response.class);
 
-        return registerRestaurantDto;
+        return restaurantResponseDto;
     }
 
-    public List<RestaurantDto> getRestaurantList() {
-        List<Restaurant> getResult = restaurantRepository.findAll();
+    public List<RestaurantDto.Response> getRestaurantList() {
+        List<Restaurant> restaurantList = restaurantRepository.findAll();
 
-        List<RestaurantDto> getResultDto = Arrays.asList(modelMapper.map(getResult, RestaurantDto[].class));
+        List<RestaurantDto.Response> restaurantResponseDto = Arrays.asList(modelMapper.map(restaurantList, RestaurantDto.Response[].class));
 
-        return getResultDto;
+        return restaurantResponseDto;
     }
 }

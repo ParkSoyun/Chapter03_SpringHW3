@@ -27,9 +27,9 @@ public class Restaurant {
     @Column(name = "delivery_fee")
     private int deliveryFee;
 
-    public Restaurant(RestaurantDto restaurantDto) {
-        this.name = restaurantDto.getName();
-        this.minOrderPrice = restaurantDto.getMinOrderPrice();
-        this.deliveryFee = restaurantDto.getDeliveryFee();
+    public Restaurant(RestaurantDto.Request restaurantRequestDto) {
+        this.name = restaurantRequestDto.getName();
+        this.minOrderPrice = restaurantRequestDto.getMinOrderPrice();
+        this.deliveryFee = restaurantRequestDto.getDeliveryFee();
     }
 }
