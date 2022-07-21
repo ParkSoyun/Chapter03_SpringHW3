@@ -78,9 +78,14 @@
 ![image](https://user-images.githubusercontent.com/50862493/179974378-a89f982c-2f77-45f4-877d-63c1f7bb750a.png)
 
 ## 📌 데이터베이스 설계
+### 테이블
 ![image](https://user-images.githubusercontent.com/50862493/179980065-98e804b9-4210-4e8f-a613-f3a7072b8650.png)
 ![image](https://user-images.githubusercontent.com/50862493/179980152-1db24319-8fc8-48db-a684-c9071621bbf1.png)
 ![image](https://user-images.githubusercontent.com/50862493/179980223-49c011be-0eea-4367-af93-a271c5fc7b4d.png)
 ![image](https://user-images.githubusercontent.com/50862493/179980289-afd38119-41b0-422b-a55d-a54c27d06453.png)
+
+### ERD
+![spring-hw3-ERD](https://user-images.githubusercontent.com/50862493/180258494-e66f2318-dd53-47f5-8759-7e229d5dd879.png)
+
 
 
