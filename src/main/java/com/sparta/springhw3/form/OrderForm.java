@@ -12,13 +12,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class OrderRequestForm {
+public class OrderForm {
 
+    @NotNull
     private Long restaurantId;
 
     @Valid
     @NotNull
     @Size(min = 1)
-    private List<OrderDetailRequestForm> foods;
+    private List<OrderDetailForm> foods;
 
 }

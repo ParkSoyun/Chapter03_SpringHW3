@@ -1,8 +1,7 @@
 package com.sparta.springhw3.controller;
 
-import com.sparta.springhw3.dto.OrderRequestDto;
-import com.sparta.springhw3.dto.OrderResponseDto;
-import com.sparta.springhw3.form.OrderRequestForm;
+import com.sparta.springhw3.dto.OrderDto;
+import com.sparta.springhw3.form.OrderForm;
 import com.sparta.springhw3.service.OrdersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +18,14 @@ public class OrderController {
     private final OrdersService ordersService;
 
     @PostMapping("/order/request")
-    public OrderResponseDto orderFoods(@Valid @RequestBody OrderRequestForm ordersDetailForm) {
-        OrderRequestDto orderRequestDto = new OrderRequestDto(ordersDetailForm);
+    public OrderDto.Response orderFoods(@Valid @RequestBody OrderForm orderForm) {
+        OrderDto.Request orderRequestDto = new OrderDto.Request(orderForm);
 
         return ordersService.orderFoods(orderRequestDto);
     }
 
     @GetMapping("/orders")
-    public List<OrderResponseDto> getOrderList() {
+    public List<OrderDto.Response> getOrderList() {
         return ordersService.getOrderList();
     }
 }

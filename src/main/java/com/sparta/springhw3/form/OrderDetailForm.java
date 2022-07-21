@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class OrderDetailRequestForm {
+public class OrderDetailForm {
     @NotNull
     private Long id;
 
