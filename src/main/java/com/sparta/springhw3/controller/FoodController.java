@@ -27,13 +27,13 @@ public class FoodController {
             throw new BindException(bindingResult);
         }
 
-        List<FoodDto> foodDtoList = foodFormList.stream().map(FoodDto::new).collect(Collectors.toList());
+        List<FoodDto.Request> foodRequestDtoList = foodFormList.stream().map(FoodDto.Request::new).collect(Collectors.toList());
 
-        foodService.registerFood(restaurantId, foodDtoList);
+        foodService.registerFood(restaurantId, foodRequestDtoList);
     }
 
     @GetMapping("/restaurant/{restaurantId}/foods")
-    public List<FoodDto> getMenuList(@PathVariable("restaurantId") Long restaurantId) {
+    public List<FoodDto.Response> getMenuList(@PathVariable("restaurantId") Long restaurantId) {
         return foodService.getMenu(restaurantId);
     }
 }

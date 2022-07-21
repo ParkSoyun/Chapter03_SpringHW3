@@ -27,9 +27,9 @@ public class Food {
 
     private int price;
 
-    public Food(Restaurant restaurant, FoodDto foodDto) {
+    public Food(Restaurant restaurant, FoodDto.Request foodRequestDto) {
         this.restaurant = restaurant;
-        this.name = foodDto.getName();
-        this.price = foodDto.getPrice();
+        this.name = foodRequestDto.getName();
+        this.price = foodRequestDto.getPrice();
     }
 }

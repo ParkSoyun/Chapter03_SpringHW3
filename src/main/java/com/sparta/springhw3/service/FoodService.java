@@ -35,12 +35,12 @@ public class FoodService {
     }
 
     @Transactional
-    public void registerFood(Long restaurantId, List<FoodDto> foodDtoList) {
+    public void registerFood(Long restaurantId, List<FoodDto.Request> foodRequestDtoList) {
         Restaurant restaurant = getRestaurant(restaurantId);
 
-        for(FoodDto foodDto: foodDtoList) {
-            String name = foodDto.getName();
-            int price = foodDto.getPrice();
+        for(FoodDto.Request foodRequestDto: foodRequestDtoList) {
+            String name = foodRequestDto.getName();
+            int price = foodRequestDto.getPrice();
 
             if(checkExistName(restaurant, name)) {
                 throw new IllegalArgumentException("해당 이름의 메뉴가 이미 존재합니다.");
@@ -50,18 +50,18 @@ public class FoodService {
                 throw new IllegalArgumentException("음식 가격은 100원 단위로만 입력이 가능합니다.");
             }
 
-            Food food = new Food(restaurant, foodDto);
+            Food food = new Food(restaurant, foodRequestDto);
 
             foodRepository.save(food);
         }
     }
 
-    public List<FoodDto> getMenu(Long restaurantId) {
+    public List<FoodDto.Response> getMenu(Long restaurantId) {
         Restaurant restaurant = getRestaurant(restaurantId);
 
-        List<Food> getResult = foodRepository.findAllByRestaurant(restaurant);
-        List<FoodDto> getResultDto = Arrays.asList(modelMapper.map(getResult, FoodDto[].class));
+        List<Food> foodList = foodRepository.findAllByRestaurant(restaurant);
+        List<FoodDto.Response> foodResponseDtoList = Arrays.asList(modelMapper.map(foodList, FoodDto.Response[].class));
 
-        return getResultDto;
+        return foodResponseDtoList;
     }
 }
